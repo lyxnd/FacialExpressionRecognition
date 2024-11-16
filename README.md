@@ -1,5 +1,6 @@
 # 人脸表情识别
-
+原作者：https://github.com/luanshiyinyang/FacialExpressionRecognition
+本人仅根据作业要求进行小幅修改，同时替换了部分旧版的代码和依赖。便于部署
 ## 更新日志
 
 ### v0.1
@@ -109,6 +110,16 @@ python src/recognition_camera.py
 
 ```shell
 python src/recognition_camera.py --source 1 --video_path 视频绝对路径或者相对于该项目的根目录的相对路径
+```
+
+```shell
+python src/recognition_video.py --video_path 视频的路径 --output_path 输出识别的结果的路径
+python src/recognition_video.py
+```
+
+```shell
+python src/recognition_video_frame.py --video_path 视频的路径 --output_path 输出识别的结果的路径
+python src/recognition_video_frame.py
 ```
 
 下图是动态演示的在Youtube上[某个视频](https://www.youtube.com/watch?v=r5Z741PC9_c)上的识别结果。

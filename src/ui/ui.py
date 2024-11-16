@@ -3,10 +3,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import matplotlib
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
+
+from src.recognition import predict_expression, face_detect
+
 matplotlib.use("Qt5Agg")
 import sys
 sys.path.append('../')
-from recognition import *
+
 
 
 class UI(object):

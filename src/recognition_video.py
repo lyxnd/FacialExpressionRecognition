@@ -1,14 +1,12 @@
-"""
-author: Your Name
-datetime: YYYY/MM/DD
-desc: 实现视频表情识别并保存标注结果到新视频
-"""
 import os
 import cv2
 import numpy as np
+import argparse
 from model import CNN3  # 确保你有 CNN3 模型文件
 from utils import index2emotion, cv2_img_add_text  # 确保 utils 文件中包含这两个函数
 from blazeface import blaze_detect  # 确保 BlazeFace 检测模块可用
+
+
 def load_model():
     """
     加载本地模型
@@ -107,10 +105,17 @@ def predict_expression(video_path, output_path):
 
 
 if __name__ == '__main__':
-    video_path = './input/sample_video.mp4'  # 替换为你的输入视频路径
-    output_path = './output/result.avi'  # 替换为你的输出视频路径
+    # 使用 argparse 获取命令行参数
+    parser = argparse.ArgumentParser(description="视频表情识别并保存结果到新视频")
+    parser.add_argument('--video_path', type=str, default='./temp/test.mp4', help='输入视频路径')
+    parser.add_argument('--output_path', type=str, default='./output/result.mp4', help='输出视频路径')
 
-    if not os.path.exists('./output'):
-        os.makedirs('./output')
+    # 解析命令行参数
+    args = parser.parse_args()
 
-    predict_expression(video_path, output_path)
+    # 如果输出文件夹不存在，则创建
+    if not os.path.exists(os.path.dirname(args.output_path)):
+        os.makedirs(os.path.dirname(args.output_path))
+
+    # 调用预测和保存函数
+    predict_expression(args.video_path, args.output_path)

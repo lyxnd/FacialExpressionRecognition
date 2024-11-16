@@ -9,3 +9,4 @@ __pycache__/
 *.rar
 *.h5
 models
+temp
